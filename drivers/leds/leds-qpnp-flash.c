@@ -1741,6 +1741,7 @@ static void qpnp_flashlight_led_brightness_set(struct led_classdev *led_cdev,
 	pr_err("current_ma qpnp_flashlight_led_brightness_set value %d\n", value);
 
 	if (value == 1 || value == 0) {
+		flash_node->cdev.brightness = value;
 		queue_work(led->ordered_workq, &flash_node->work);
 		return;
 	} else {
